@@ -1,0 +1,93 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Badge from "../components/Badge.astro";
+import SocialPill from "../components/SocialPill.astro";
+import Experience from "../components/Experience.astro";
+import Projects from "../components/Projects.astro";
+import SectionContainer from "../components/SectionContainer.astro";
+
+import LinkedInIcon from "../components/icons/LinkedIn.astro";
+import GitHubIcon from "../components/icons/GitHub.astro";
+import MailIcon from "../components/icons/Mail.astro";
+import BriefcaseIcon from "../components/icons/Briefcase.astro";
+import CodeIcon from "../components/icons/Code.astro";
+---
+
+<Layout
+  title={`Porfolio de Alejandro Bordón -
+   Ingeniero y Desarrollador de software con más de 1 año de experiencia`}
+  description={`¡Hola! Soy Alejandro Rafael Bordón Duarte, 
+  un desarrollador full stack con más de un año de experiencia y 
+  estudiante próximo a graduarme en Ingeniería Informática en la UIB. 
+  Mi pasión por el front-end y las soluciones blockchain ha definido
+  mi enfoque, permitiéndome crear interfaces atractivas y 
+  explorar innovaciones tecnológicas. 
+  Actualmente, estoy en búsqueda de nuevas oportunidades
+  laborales para aplicar mis habilidades y contribuir a 
+  proyectos significativos. 
+  ¡Estoy emocionado por el futuro y ansioso por unirme a 
+  equipos dinámicos y visionarios!`}
+>
+  <main class="px-4">
+    <SectionContainer id="top" class="py-44 pb-32">
+      <img
+    class="rounded-full w-12 h-12 mb-4"
+    src="/perfil.webp"
+    alt="foto perfil"
+  />
+      <h1
+        class="text-white text-3xl md:text-4xl 
+        lg:text-5xl font-bold justify-center flex-row gap-x-4 pb-6 lg:pb-10"
+      >
+        Hola, soy Alejandro
+        <a
+          href="https://linkedin.com/in/alejandro-bordón-duarte"
+          rel="noopener"
+          target="_blank"
+          class="flex justify-center items-center"
+        >
+          <Badge>Disponible para trabajar</Badge>
+        </a>
+      </h1>
+      <h2 class="text-xl lg:text-2xl text-wrap max-w-[700px]">
+        <span>+1 año de experiencia.</span>
+        <span class="text-green-200">
+          Desarrollador Full Stack y Apasionado de las Tecnologías.
+        </span>
+        <span class="text-red-200"> De Mallorca, España.</span>
+        <span class="opacity-75"
+          >Especializado en desarrollar SaSS y soluciones en Blockchain</span
+        >
+      </h2>
+
+      <nav class="flex gap-4 mt-8 flex-wrap">
+        <SocialPill href="https://linkedin.com/in/alejandro-bordón-duarte">
+          <LinkedInIcon class="size-4 md:size-6" />
+          LinkedIn
+        </SocialPill>
+        <SocialPill href="https://github.com/AlejandroB10">
+          <GitHubIcon class="size-4 md:size-6" />
+          GitHub
+        </SocialPill>
+        <SocialPill href="mailto:alebordon111@gmail.com">
+          <MailIcon class="size-4 md:size-6" />
+          alebordon111@gmail.com
+        </SocialPill>
+      </nav>
+    </SectionContainer>
+
+    <SectionContainer id="experiencia">
+      <h2 class="text-3xl font-semibold mb-4 flex gap-x-3 items-center">
+        <BriefcaseIcon class="size-7" /> Experiencia Laboral
+      </h2>
+      <Experience />
+    </SectionContainer>
+
+    <SectionContainer id="proyectos">
+      <h2 class="text-3xl font-semibold mb-4 flex gap-x-3 items-center">
+        <CodeIcon class="size-7" /> Proyectos
+      </h2>
+      <Projects />
+    </SectionContainer>
+  </main>
+</Layout>

@@ -1,0 +1,49 @@
+---
+import TailwindCSSIcon from "./icons/TailwindCSS.astro";
+const TAGS = {
+  TAILWIND: {
+    name: "Tailwind CSS",
+    class: "bg-[#003159] text-white",
+    icon: TailwindCSSIcon,
+  },
+};
+
+const PROJECTS = [
+  {
+    title: "Project 1",
+    description: "LOREMP IPSUM LOREM IPSUM",
+    link: "#",
+    github: "#",
+    image: "https://via.placeholder.com/300x200",
+    tags: [TAGS.TAILWIND],
+  },
+];
+---
+
+{
+  PROJECTS.map((project) => (
+    <article>
+      <h3 class="text-2xl font-semibold text-green-200 mb-2 ">
+        {project.title}
+      </h3>
+      <p class="text-lg mb-4 text-pretty">{project.description}</p>
+      <ul class="flex flex-row gap-x-2 mb-2">
+        {project.tags.map((tag) => (
+          <li>
+            <span
+              class={`flex gap-x-2 rounded-full text-xs py-1 px-2 ${tag.class} `}
+            >
+              <tag.icon class="size-4" />
+              {tag.name}
+            </span>
+          </li>
+        ))}
+      </ul>
+      <img
+        class="rounded shadow-2xl shadow-white/10"
+        src={project.image}
+        alt={`Captura de pantalla del proyecto${project.image}`}
+      />
+    </article>
+  ))
+}
