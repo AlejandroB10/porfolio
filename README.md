@@ -52,3 +52,6 @@ All commands are run from the root of the project, from a terminal:
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+
+# porfolio
+Explora mi porfolio digital con proyectos variados en desarrollo de software. Desde aplicaciones web hasta aplicaciones móvil, descubre mi habilidad y experiencia. ¡Conéctate conmigo para colaboraciones emocionantes!
