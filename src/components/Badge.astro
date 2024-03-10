@@ -1,3 +1,25 @@
-<span class="bg-blue-100 text-blue">
-<slot />
-</span>
+<a
+  href={Astro.props.href}
+  rel="noopener"
+  target="_blank"
+  class={Astro.props.class}
+>
+  <div class="flex items-center">
+    <span class="relative inline-flex overflow-hidden rounded-full p-[2px] font-bold">
+      <span
+        class="absolute inset-[-1000%]
+       animate-[spin_2s_linear_infinite]
+       bg-[conic-gradient(from_90deg_at_50%_50%,#EC4899_0%,#9D174D_50%,#EC4899_100%)]"
+      ></span>
+      <div
+        class="inline-flex items-center justify-center 
+        w-full px-3 py-1 text-sm text-gray-600/75 bg-sky-50
+        rounded-full cursor-pointer dark:bg-gray-900
+         dark:text-gray-300 backdrop-blur-3xl whitespace-nowrap gap-x-2"
+      >
+        <slot name="before" />
+        <slot />
+      </div>
+    </span>
+  </div>
+</a>

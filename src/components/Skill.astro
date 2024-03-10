@@ -1,0 +1,125 @@
+---
+import TailwindCSSIcon from "./icons/TailwindCSS.astro";
+import Badge from "../components/Badge.astro";
+import GitHubIcon from "../components/icons/GitHub.astro";
+import LinkIcon from "../components/icons/Link.astro";
+
+const SKILLS = {
+  TAILWIND: {
+    name: "Tailwind CSS",
+    class: "bg-[#003159] text-white",
+    icon: TailwindCSSIcon,
+  },
+};
+
+---
+
+<div class="mt-14 mb-10">
+  <div class="w-full progress-group">
+    <div class="shadow w-full bg-grey-light">
+      <div
+        class="progressbar bg-blue-500 text-xs leading-none py-1 text-center font-bold text-white rounded-lg "
+        data-value="61"
+      >
+        61%
+      </div>
+    </div>
+
+    <div
+      class="shadow w-full bg-grey-light mt-2 animate__animated animate__fadeIn animate__delay-100"
+    >
+      <div
+        class="progressbar bg-teal-500 text-xs leading-none py-1 text-center text-white"
+        data-value="87"
+      >
+        87%
+      </div>
+    </div>
+
+    <div
+      class="shadow w-full bg-grey-light mt-2 animate__animated animate__fadeIn animate__delay-200"
+    >
+      <div
+        class="progressbar bg-orange-500 text-xs leading-none py-1 text-center text-white"
+        data-value="43"
+      >
+        43%
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  function startAnimation(element, duration, onprogress, oncomplete) {
+    let startTime;
+
+    function repeatAnimation(timestamp) {
+      if (undefined === startTime) {
+        startTime = timestamp;
+      }
+      const progress = timestamp - startTime;
+      const pourcent = (progress / duration) * 100;
+
+      if (progress < duration) {
+        onprogress && onprogress(element, pourcent);
+        element.requestID = window.requestAnimationFrame(repeatAnimation);
+      } else {
+        oncomplete && oncomplete(element, 100);
+      }
+    }
+
+    window.cancelAnimationFrame(element.requestID);
+    element.requestID = window.requestAnimationFrame(repeatAnimation);
+  }
+
+  function onprogress(element, pourcent) {
+    const max = element.dataset.value || 100;
+    const inc = max / 100;
+    const value = inc * pourcent;
+    element.textContent = value.toFixed(0) + "%";
+    element.style.backgroundSize = value + "%";
+    element.style.width = value + "%";
+  }
+
+  function oncomplete(element, pourcent) {
+    onprogress(element, 100);
+  }
+
+  function isElementInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    return (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <=
+        (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+  }
+
+  function handleScroll() {
+    const elements = document.querySelectorAll(".progressbar");
+    elements.forEach((el) => {
+      if (isElementInViewport(el) && !el.hasAttribute("data-animated")) {
+        lanceAnimation(el);
+      }
+    });
+  }
+
+  function lanceAnimation(element) {
+    const duration = 3000;
+    startAnimation(
+      element,
+      duration,
+      (el, pourcent) => {
+        onprogress(el, pourcent);
+        el.setAttribute("data-animated", "true");
+      },
+      oncomplete
+    );
+  }
+
+  // Ejecuta handleScroll en el evento de desplazamiento
+  window.addEventListener("scroll", handleScroll);
+  // Ejecuta handleScroll al cargar la página para verificar inmediatamente los elementos visibles
+  // window.addEventListener("load", handleScroll);
+</script>

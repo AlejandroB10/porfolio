@@ -1,0 +1,54 @@
+---
+import Badge from "../components/Badge.astro"
+import SocialPill from "../components/SocialPill.astro"
+
+import LinkedInIcon from "../components/icons/LinkedIn.astro"
+import GitHubIcon from "../components/icons/GitHub.astro"
+import MailIcon from "../components/icons/Mail.astro"
+---
+
+<div class="max-w-4xl">
+  <div class="flex gap-4 mb-4">
+    <img
+      class="rounded-full size-40 shadow-lg object-cover object-center"
+      src="/foto-perfil.webp"
+      alt="foto perfil de Alejandro Rafael Bordón Duarte"
+    />
+      <Badge 
+      class="flex justify-center items-center transition hover:scale-105"
+      href="https://linkedin.com/in/alejandro-bordón-duarte">
+      Disponible para trabajar</Badge>
+
+  </div>
+  <h1
+    class="text-gray-600 dark:text-gray-400 text-2xl
+        sm:text-4xl font-bold tracking-tight "
+  >
+    Hola, soy Alejandro Bordón
+  </h1>
+  <h2 class="text-xl mt-6 font-semibold text-gray-600 text-wrap dark:text-gray-400">
+    <span>+1 año de experiencia.</span>
+    <span class="text-sky-500 dark:text-sky-500">
+      Desarrollador Full Stack y Apasionado de las Tecnologías.
+    </span>
+    <span class="text-pink-500"> De Mallorca, España.</span>
+    <span class="opacity-75"
+      >Especializado en desarrollar SaSS y soluciones en Blockchain</span
+    >
+  </h2>
+
+  <nav class="flex gap-4 mt-8 flex-wrap">
+    <SocialPill href="https://linkedin.com/in/alejandro-bordón-duarte">
+      <LinkedInIcon class="size-4" />
+      LinkedIn
+    </SocialPill>
+    <SocialPill href="https://github.com/AlejandroB10">
+      <GitHubIcon class="size-4" />
+      GitHub
+    </SocialPill>
+    <SocialPill href="mailto:alebordon111@gmail.com">
+      <MailIcon class="size-4" />
+      alebordon111@gmail.com
+    </SocialPill>
+  </nav>
+</div>

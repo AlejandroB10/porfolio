@@ -1,0 +1,43 @@
+---
+import SunIcon from "./icons/Sun.astro";
+import MoonIcon from "./icons/Moon.astro";
+
+const THEMES = ["Light", "Dark", "System"];
+---
+
+<div class="relative ml-1 mr-1">
+  <button
+    onclick="toggleTheme()"
+    class="appearance-none border-none flex transition
+    hover:text-sky-600 dark:hover:text-sky-400 hover:scale-125 "
+  >
+    <SunIcon id="light" class="theme-toggle-icon size-5 transition-all" />
+    <MoonIcon id="dark" class="theme-toggle-icon size-5 transition-all" />
+  </button>
+</div>
+
+<script is:inline>
+  let isDarkMode = true;
+
+  const updateIcon = (isDark) => {
+    const sunIcon = document.getElementById("light");
+    const moonIcon = document.getElementById("dark");
+
+    sunIcon.style.display = isDark ? "none" : "block";
+    moonIcon.style.display = isDark ? "block" : "none";
+  };
+
+  const toggleTheme = () => {
+    isDarkMode = !isDarkMode;
+    updateTheme();
+  };
+
+  const updateTheme = () => {
+    const isDark = isDarkMode;
+
+    updateIcon(isDark);
+    document.documentElement.classList[isDark ? "add" : "remove"]("dark");
+  };
+
+  updateTheme();
+</script>

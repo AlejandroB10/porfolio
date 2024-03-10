@@ -1,5 +1,9 @@
 ---
 import TailwindCSSIcon from "./icons/TailwindCSS.astro";
+import Badge from "../components/Badge.astro";
+import GitHubIcon from "../components/icons/GitHub.astro";
+import LinkIcon from "../components/icons/Link.astro";
+
 const TAGS = {
   TAILWIND: {
     name: "Tailwind CSS",
@@ -20,30 +24,61 @@ const PROJECTS = [
 ];
 ---
 
-{
-  PROJECTS.map((project) => (
-    <article>
-      <h3 class="text-2xl font-semibold text-green-200 mb-2 ">
-        {project.title}
-      </h3>
-      <p class="text-lg mb-4 text-pretty">{project.description}</p>
-      <ul class="flex flex-row gap-x-2 mb-2">
-        {project.tags.map((tag) => (
-          <li>
-            <span
-              class={`flex gap-x-2 rounded-full text-xs py-1 px-2 ${tag.class} `}
-            >
-              <tag.icon class="size-4" />
-              {tag.name}
-            </span>
-          </li>
-        ))}
-      </ul>
-      <img
-        class="rounded shadow-2xl shadow-white/10"
-        src={project.image}
-        alt={`Captura de pantalla del proyecto${project.image}`}
-      />
-    </article>
-  ))
-}
+<div class="flex flex-col gap-y-16 mt-14 mb-10">
+  {
+    PROJECTS.map((project) => (
+      <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
+        <div class="w-full md:w-1/2 md:max-w-lg">
+          <h3 class="text-2xl font-bold text-sky-400 mb-2 ">{project.title}</h3>
+          <div class="flex flex-wrap mt-2">
+            <p class="text-lg mt-2 text-gray-600 dark:text-white text-pretty">
+              {project.description}
+            </p>
+            <div class="flex items-end justify-start my-4 gap-x-4">
+              {project.github && (
+                <Badge
+                  href={project.github}
+                  class="flex justify-center items-center transition hover:scale-105"
+                >
+                  <GitHubIcon class="size-4 " slot="before" />
+                  Code
+                </Badge>
+              )}
+              {project.link && (
+                <Badge
+                  href={project.link}
+                  class="flex justify-center items-center transition hover:scale-105"
+                >
+                  <LinkIcon class="size-4" slot="before" />
+                  Preview
+                </Badge>
+              )}
+            </div>
+          </div>
+          <ul class="flex flex-row gap-x-2 my-1">
+            {project.tags.map((tag) => (
+              <li>
+                <span
+                  class={`flex gap-x-2 rounded-full text-xs py-1 px-2 ${tag.class} `}
+                >
+                  <tag.icon class="size-4" />
+                  {tag.name}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="w-full md:w-1/2">
+          <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
+            <img
+              alt="Recién llegado vs 5 años en Nueva Zelanda"
+              class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"
+              loading="lazy"
+              src={project.image}
+            />
+          </div>
+        </div>
+      </article>
+    ))
+  }
+</div>
